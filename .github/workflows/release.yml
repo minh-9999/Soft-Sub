@@ -10,11 +10,32 @@ permissions:
 
 jobs:
   release:
+    env:
+      CARGO_INCREMENTAL: 0
+      CARGO_TERM_COLOR: always
+      CARGO_BUILD_JOBS: 2
+      RUST_BACKTRACE: 1
+
     runs-on: windows-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Cache Rust
+        uses: actions/cache@v4
+        with:
+          path: |
+            C:\Users\runneradmin\.cargo\registry
+            C:\Users\runneradmin\.cargo\git
+            src-tauri\target
+          key: ${{ runner.os }}-rust-${{ hashFiles('src-tauri/Cargo.lock') }}
+
+      - name: Cache node
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -49,16 +70,18 @@ jobs:
         run: pytest tools/tests
 
       - name: Build and create GitHub Release
-        uses: tauri-apps/tauri-action@v0
+        uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tagName: ${{ github.ref_name }}
-          releaseName: SoftSub ${{ github.ref_name }}
-          releaseBody: |
+          tag_name: ${{ github.ref_name }}
+          name: SoftSub ${{ github.ref_name }}
+          body: |
             ## Changes
 
             See commit history for details.
-
-          releaseDraft: false
+          draft: false
           prerelease: false
+          files: |
+            src-tauri/target/release/bundle/msi/*.msi
+            src-tauri/target/release/bundle/nsis/*.exe
