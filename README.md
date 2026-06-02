@@ -22,9 +22,8 @@
 
 ## Screenshots
 
-<h2>Screenshots</h2>
 
-<h3>Image Theme</h3>
+<h4>Image Theme</h4>
 
 <p>
   Main application window using the image-based theme.
@@ -32,7 +31,7 @@
 
 <img src=".github/images/Image-theme.PNG" width="900">
 
-<h3>Dracula Theme</h3>
+<h4>Dracula Theme</h4>
 
 <p>
   Built-in Dracula dark theme.
@@ -40,7 +39,7 @@
 
 <img src=".github/images/dracula-theme.PNG" width="900">
 
-<h3>Generated Subtitle</h3>
+<h4>Generated Subtitle</h4>
 
 <p>
   Example subtitle generated automatically from a video.

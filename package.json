@@ -1,13 +1,18 @@
 {
   "name": "softsub-tauri",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
+  
   "scripts": {
     "dev": "npm run copy-whisper:dev && tauri dev",
     "build": "npm run copy-whisper:release && tauri build",
+	
+	"tauri": "tauri",
+	
     "copy-whisper:dev": "node scripts/copy-whisper.js debug",
     "copy-whisper:release": "node scripts/copy-whisper.js release",
+	
     "test": "npm run test:rust && npm run test:js && npm run test:py",
     "test:rust": "cd src-tauri && cargo test",
     "test:rust:ignored": "cd src-tauri && cargo test -- --ignored",
