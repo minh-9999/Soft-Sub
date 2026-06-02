@@ -5,7 +5,67 @@ on:
   pull_request:
 
 jobs:
-  test:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      rust: ${{ steps.filter.outputs.rust }}
+      python: ${{ steps.filter.outputs.python }}
+      js: ${{ steps.filter.outputs.js }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            rust:
+              - 'src-tauri/**'
+            python:
+              - 'tools/**'
+            js:
+              - 'package.json'
+              - 'package-lock.json'
+              - 'src/**'
+              - 'vitest.config.*'
+              - 'vite.config.*'
+              
+  rust-test:
+    needs: changes
+    if: needs.changes.outputs.rust == 'true'
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Rust tests
+        working-directory: src-tauri
+        run: cargo test
+        
+
+  python-test:
+    needs: changes
+    if: needs.changes.outputs.python == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: |
+          pip install -r tools/requirements-dev.txt
+          pytest tools/tests
+
+
+  js-test:
+    needs: changes
+    if: needs.changes.outputs.js == 'true'
     runs-on: windows-latest
 
     steps:
@@ -17,21 +77,4 @@ jobs:
           cache: npm
 
       - run: npm ci
-
-      - uses: dtolnay/rust-toolchain@stable
-
-      - name: Rust tests
-        working-directory: src-tauri
-        run: cargo test
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - run: |
-          pip install -r tools/requirements-dev.txt
-          pytest tools/tests
-
-      - name: Vitest
-        run: npm test -- --run
+      - run: npm test -- --run
