@@ -172,7 +172,9 @@ def translate_texts(texts: list[str], source: str, target: str) -> list[str]:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Translate SRT cue text.")
     parser.add_argument("srt_path", help="Path to .srt file (updated in place)")
-    parser.add_argument("--source", default="en", help="Source language code (default: en)")
+    parser.add_argument(
+        "--source", default="en", help="Source language code (default: en)"
+    )
     parser.add_argument("--target", required=True, help="Target language code")
     args = parser.parse_args()
 
