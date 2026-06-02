@@ -6,7 +6,7 @@ on:
 
 jobs:
   changes:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     outputs:
       rust: ${{ steps.filter.outputs.rust }}
       python: ${{ steps.filter.outputs.python }}
@@ -68,17 +68,23 @@ jobs:
           pytest tools/tests
   
       - name: Ensure output dir
+        shell: bash
         run: mkdir -p tests/output
   
+      - name: Check file exists (debug)
+        shell: bash
+        run: ls tests/output
+ 
+      - name: Find whisper binary
+        shell: bash
+        run: find whisper.cpp -type f
+        
       - name: Generate SRT from audio
         run: |
           python tools/generate.py \
             tests/fixtures/audio/sample.wav \
             tests/output/out.srt
       
-      - name: Check file exists (debug)
-        run: ls tests/output
-  
       - name: Regression check
         run: |
           python tools/tests/compare.py \
