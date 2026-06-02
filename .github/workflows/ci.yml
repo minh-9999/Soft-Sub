@@ -45,7 +45,12 @@ jobs:
         working-directory: src-tauri
         run: cargo test
         
-
+      - name: Run pipeline test
+        shell: bash
+        run: |
+          chmod +x tools/tests/test_pipeline.sh
+          tools/tests/test_pipeline.sh
+          
   python-test:
     needs: changes
     if: needs.changes.outputs.python == 'true'
@@ -61,8 +66,19 @@ jobs:
       - run: |
           pip install -r tools/requirements-dev.txt
           pytest tools/tests
-
-
+  
+      - name: Generate SRT from audio
+        run: |
+          python tools/generate.py \
+            tests/fixtures/audio/sample.wav \
+            tests/output/out.srt
+      
+      - name: Regression check
+        run: |
+          python tools/tests/compare.py \
+            tests/fixtures/expected/sample.srt \
+            tests/output/out.srt
+            
   js-test:
     needs: changes
     if: needs.changes.outputs.js == 'true'

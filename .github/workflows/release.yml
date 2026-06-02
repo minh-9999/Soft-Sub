@@ -90,6 +90,9 @@ jobs:
               exit 1
             fi
 
+      - name: Show bundle output (debug)
+        run: ls -R src-tauri/target/release/bundle
+        
       - name: Build and create GitHub Release
         uses: softprops/action-gh-release@v2
         env:
