@@ -72,9 +72,23 @@ jobs:
       - name: Build application
         run: npm run build
 
-      - name: Verify artifacts
+      - name: Fail if MSI missing
+        shell: bash
         run: |
-          dir src-tauri\target\release\bundle /s
+            shopt -s nullglob
+            
+            msi=(src-tauri/target/release/bundle/msi/*.msi)
+            exe=(src-tauri/target/release/bundle/nsis/*.exe)
+
+            if [ ${#msi[@]} -eq 0 ]; then
+              echo "No MSI found"
+              exit 1
+            fi
+
+            if [ ${#exe[@]} -eq 0 ]; then
+              echo "No EXE found"
+              exit 1
+            fi
 
       - name: Build and create GitHub Release
         uses: softprops/action-gh-release@v2
