@@ -1,0 +1,2 @@
+# Optional: required only for Translate mode when target language is not English.
+deep-translator>=1.11.0

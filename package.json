@@ -1,0 +1,30 @@
+{
+  "name": "softsub-tauri",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run copy-whisper:dev && tauri dev",
+    "build": "npm run copy-whisper:release && tauri build",
+    "copy-whisper:dev": "node scripts/copy-whisper.js debug",
+    "copy-whisper:release": "node scripts/copy-whisper.js release",
+    "test": "npm run test:rust && npm run test:js && npm run test:py",
+    "test:rust": "cd src-tauri && cargo test",
+    "test:rust:ignored": "cd src-tauri && cargo test -- --ignored",
+    "test:js": "vitest run",
+    "test:py": "python -m pytest tools/tests -q",
+    "bench": "cd src-tauri && cargo bench"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0",
+    "fs-extra": "^11.3.5",
+    "prettier-plugin-brace-style": "^0.10.1",
+    "shx": "^0.4.0",
+    "terser": "^5.48.0",
+    "vitest": "^3.2.6"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.11.0",
+    "@tauri-apps/plugin-fs": "^2.5.1"
+  }
+}

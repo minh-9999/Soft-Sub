@@ -1,0 +1,410 @@
+{
+    "files.associations": {
+        "tuple": "cpp",
+        "stdexcept": "cpp",
+        "xstring": "cpp",
+        "iostream": "cpp",
+        "algorithm": "cpp",
+        "array": "cpp",
+        "atomic": "cpp",
+        "bit": "cpp",
+        "cctype": "cpp",
+        "charconv": "cpp",
+        "chrono": "cpp",
+        "clocale": "cpp",
+        "cmath": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "cstddef": "cpp",
+        "cstdint": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "cstring": "cpp",
+        "ctime": "cpp",
+        "cwchar": "cpp",
+        "exception": "cpp",
+        "format": "cpp",
+        "forward_list": "cpp",
+        "initializer_list": "cpp",
+        "iomanip": "cpp",
+        "ios": "cpp",
+        "iosfwd": "cpp",
+        "istream": "cpp",
+        "iterator": "cpp",
+        "limits": "cpp",
+        "locale": "cpp",
+        "mdspan": "cpp",
+        "memory": "cpp",
+        "mutex": "cpp",
+        "new": "cpp",
+        "optional": "cpp",
+        "ostream": "cpp",
+        "print": "cpp",
+        "ratio": "cpp",
+        "regex": "cpp",
+        "semaphore": "cpp",
+        "span": "cpp",
+        "sstream": "cpp",
+        "stop_token": "cpp",
+        "streambuf": "cpp",
+        "string": "cpp",
+        "system_error": "cpp",
+        "thread": "cpp",
+        "type_traits": "cpp",
+        "typeinfo": "cpp",
+        "utility": "cpp",
+        "vector": "cpp",
+        "xfacet": "cpp",
+        "xiosbase": "cpp",
+        "xlocale": "cpp",
+        "xlocbuf": "cpp",
+        "xlocinfo": "cpp",
+        "xlocmes": "cpp",
+        "xlocmon": "cpp",
+        "xlocnum": "cpp",
+        "xloctime": "cpp",
+        "xmemory": "cpp",
+        "xtr1common": "cpp",
+        "xutility": "cpp",
+        "functional": "cpp",
+        "condition_variable": "cpp",
+        "list": "cpp",
+        "unordered_map": "cpp",
+        "xhash": "cpp",
+        "coroutine": "cpp",
+        "resumable": "cpp",
+        "future": "cpp",
+        "bitset": "cpp",
+        "map": "cpp",
+        "xtree": "cpp",
+        "queue": "cpp",
+        "deque": "cpp",
+        "ranges": "cpp",
+        "numeric": "cpp",
+        "fstream": "cpp",
+        "filesystem": "cpp",
+        "csetjmp": "cpp",
+        "csignal": "cpp",
+        "cstdarg": "cpp",
+        "cwctype": "cpp",
+        "any": "cpp",
+        "barrier": "cpp",
+        "*.tcc": "cpp",
+        "cfenv": "cpp",
+        "cinttypes": "cpp",
+        "codecvt": "cpp",
+        "complex": "cpp",
+        "cuchar": "cpp",
+        "set": "cpp",
+        "unordered_set": "cpp",
+        "expected": "cpp",
+        "memory_resource": "cpp",
+        "random": "cpp",
+        "source_location": "cpp",
+        "string_view": "cpp",
+        "latch": "cpp",
+        "numbers": "cpp",
+        "scoped_allocator": "cpp",
+        "shared_mutex": "cpp",
+        "spanstream": "cpp",
+        "stacktrace": "cpp",
+        "stdfloat": "cpp",
+        "syncstream": "cpp",
+        "typeindex": "cpp",
+        "valarray": "cpp",
+        "variant": "cpp",
+        "*.ipp": "cpp",
+        "text_encoding": "cpp",
+        "stdint.h": "c",
+        "stack": "cpp",
+        "math.h": "c",
+        "stdio.h": "c",
+        "stb_sprintf.h": "c",
+        "execution": "cpp",
+        "generator": "cpp",
+        "strstream": "cpp",
+        "xtwo_byte": "cpp",
+        "hash_map": "cpp",
+        "hash_set": "cpp"
+    },
+
+    "clangd.path": "c:\\Users\\HAI\\AppData\\Roaming\\Code\\User\\globalStorage\\llvm-vs-code-extensions.vscode-clangd\\install\\21.1.8\\clangd_21.1.8\\bin\\clangd.exe",
+    "workbench.secondarySideBar.defaultVisibility": "visible",
+    "securecoder.enabled": true,
+
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust-analyzer"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[ruby]": {
+        "editor.defaultFormatter": "Shopify.ruby-lsp"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[dockercompose]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-containers"
+    },
+
+    "[csharp]": {
+        "editor.defaultFormatter": "ms-dotnettools.csharp"
+    },
+    "[go]": {
+        "editor.defaultFormatter": "golang.go"
+    },
+    "[java]": {
+        "editor.defaultFormatter": "redhat.java"
+    },
+
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[kotlin]": {
+        "editor.defaultFormatter": "JetBrains.kotlin"
+    },
+    "[lua]": {
+        "editor.defaultFormatter": "sumneko.lua"
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[php]": {
+        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+    },
+    "[sql]": {
+        "editor.defaultFormatter": "ms-mssql.mssql"
+    },
+    "[swift]": {
+        "editor.defaultFormatter": "apple.swift"
+    },
+
+    "[xml]": {
+        "editor.defaultFormatter": "DotJoshJohnson.xml"
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+
+    //  for ms-vscode.cpptools
+    "C_Cpp.errorSquiggles": "disabled",
+    "C_Cpp.intelliSenseEngine": "default",
+    // "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+
+    "clangd.arguments": [
+        "--background-index",
+        "--compile-commands-dir=${workspaceFolder}/build",
+        "--clang-tidy", // bật clang-tidy
+        "--completion-style=detailed", // autocomplete chi tiết hơn
+        "--header-insertion=iwyu", // tự thêm #include khi cần
+        "--suggest-missing-includes" // gợi ý include còn thiếu],
+    ],
+
+    // for ms-vscode.cpptools on Linux
+    // "C_Cpp.default.compilerPath": "/usr/bin/clang++",
+    // for ms-vscode.cpptools on Windows
+    "C_Cpp.default.compilerPath": "C:/Program Files/LLVM/bin/clang++.exe",
+
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+    "C_Cpp.clang_format_path": "C:\\Program Files\\LLVM\\bin\\clang-format.exe",
+
+    //  for ms-vscode.cpptools
+    "C_Cpp.default.cppStandard": "c++23",
+    "C_Cpp.default.cStandard": "c23",
+
+    "editor.autoClosingBrackets": "always",
+    "editor.autoClosingQuotes": "always",
+
+    "[cpp]": {
+        "editor.suggest.showKeywords": true,
+        "editor.suggest.showPreview": true,
+        "editor.suggest.showStatusBar": true,
+        "editor.suggest.showStatusBarIcon": true,
+        "editor.quickSuggestions": {
+            "strings": "on"
+        },
+        "editor.inlayHints.enabled": "off",
+        "editor.suggest.localityBonus": true,
+        "editor.acceptSuggestionOnEnter": "on",
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit",
+            "source.fixAll": "explicit",
+            "source.fixAll.eslint": "explicit",
+            "source.organizeImports.eslint": "explicit"
+        },
+        "editor.tokenColorCustomizations": {
+            "comments": {
+                "foreground": "#10B981",
+                "fontStyle": "italic"
+            }
+        },
+        "search.exclude": {
+            "**/.git": true,
+            "**/.svn": true,
+            "**/.hg": true,
+            "**/CVS": true,
+            "**/.DS_Store": true,
+            "**/.cache": true,
+            "**/.npm": true,
+            "**/node_modules": true,
+            "**/bower_components": true
+        }
+    },
+
+    "[c]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+
+    "[python]": {
+        // "editor.defaultFormatter": "ms-vscode.cpptools-extension-pack"
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true
+    },
+
+    "editor.autoIndent": "none",
+
+    "workbench.editorAssociations": {
+        "*.copilotmd": "vscode.markdown.preview.editor",
+        "{git,gitlens,chat-editing-snapshot-text-model,copilot,git-graph,git-graph-3}:/**/*.qrc": "default",
+        "*.qrc": "qt-core.qrcEditor"
+    },
+    "qt-core.qtInstallationRoot": "C:\\Qt",
+    "workbench.settings.applyToAllProfiles": [],
+
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    // Đường dẫn tới clang hoặc g++
+    // "C_Cpp.default.intelliSenseMode": "clang-x64",
+
+    // "C_Cpp.default.includePath": [
+    //   "${workspaceFolder}",
+    //   "${workspaceFolder}/googleTest",
+    //   "C:/Program Files (x86)/googletest-distribution/include",
+    //   "C:/boost-1.87.0/include",
+    //   "C:/Program Files (x86)/Intel/oneAPI/tbb/2021.12/include",
+    //   "$(env:OPENCV_DIR)/include"
+    // ],
+
+    // "cmake.sourceDirectory": "Y:/Thuc Hanh Lap Trinh C++/Thuc chien/quan ly khach san",
+    // "cmake.generator": "MinGW Makefiles",
+    "cmake.generator": "Ninja",
+    "cmake.configureOnOpen": true,
+    "editor.codeActionsOnSave": {},
+
+    // disbale automatic tasks
+    // "task.allowAutomaticTasks": "off"
+
+    "cmake.configureSettings": {
+        "C_Cpp.errorSquiggles": "disabled"
+    },
+
+    "clang.astView.suppressSymbols": ["size_t", "va_list"],
+    "clang.diagnostic.suppressSymbols": ["size_t", "va_list"],
+    "clang.help.suppressSymbols": ["size_t", "va_list"],
+
+    "debugger.terminal.integrated.shellArgs.windows": [],
+    "debugger.terminal.integrated.shellArgs.linux": [],
+    "debugger.terminal.integrated.shellArgs.osx": [],
+
+    "editor.tokenColorCustomizations": {
+        "comments": {
+            "foreground": "#FF0000",
+            "fontStyle": "italic"
+        }
+    },
+
+    "search.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/.cache": true,
+        "**/.npm": true,
+        "**/node_modules": true,
+        "**/bower_components": true
+    },
+
+    "editor.inlineSuggest.edits.showCollapsed": true,
+    "editor.inlineSuggest.enabled": true,
+    "editor.inlineSuggest.showToolbar": "always",
+    "editor.inlineSuggest.showToolbarIcon": true,
+
+    "editor.inlineSuggest.delay": 200,
+    "editor.inlineSuggest.keepSuggestions": true,
+    "editor.inlineSuggest.suppressSuggestions": true,
+
+    "editor.snippetSuggestions": "top",
+    "editor.suggest.showKeywords": true,
+    "editor.suggest.showPreview": true,
+    "editor.suggest.showStatusBar": true,
+    "editor.suggest.showStatusBarIcon": true,
+
+    "editor.quickSuggestions": {
+        "strings": "on"
+    },
+
+    "[cuda-cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+
+    "docker.dockerPath": "C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe",
+    "docker.dockerComposePath": "C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker-compose.exe",
+    "docker.dockerCliPath": "C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe",
+
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 60,
+
+    "editor.lineHeight": 1.6,
+
+    "security.allowedUNCHosts": ["[IP_ADDRESS]", "[IP_ADDRESS]"],
+
+    "scm.diffDecorations": "none",
+
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+
+    "window.zoomLevel": 0,
+    "terminal.integrated.fontSize": 14,
+
+    "window.confirmBeforeClose": "never",
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewOpening": "never",
+    "workbench.editor.enablePreviewClosing": false,
+
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-containers"
+    },
+
+    "yaml.schemas": {
+        "kubernetes": "*.yaml",
+        "docker-compose": "docker-compose.yml",
+        "ansible": "*.yml"
+    },
+
+    "window.titleBarStyle": "native",
+    "window.titleSeparator": " - ",
+
+    "editor.cursorBlinking": "solid",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.cursorBlinkingBorder": "on"
+}

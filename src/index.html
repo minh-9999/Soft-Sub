@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Softsub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body>
+  <div class="shell">
+    <!-- ── Header ── -->
+    <header>
+      <div class="logo">SOFT<span>SUB</span></div>
+      <div class="header-sep"></div>
+      <div class="status-dot" id="statusDot"></div>
+      <div class="status-label" id="statusLabel">IDLE</div>
+
+      <div class="header-right">
+        <!-- Theme toggle button -->
+        <button class="theme-btn" id="themeBtnHeader" onclick="toggleThemePanel()">
+          ◐ Theme
+        </button>
+      </div>
+    </header>
+
+    <!-- ── Theme panel (dropdown) ── -->
+    <div class="theme-panel" id="themePanel">
+      <div class="theme-panel-title">Color Theme</div>
+      <div class="theme-list" id="themeList"></div>
+
+      <div class="theme-sep"></div>
+
+      <div class="theme-panel-title">Background Image</div>
+      <button class="theme-img-btn" onclick="pickBgImage()">📁 Choose image…</button>
+      <img class="theme-img-preview" id="bgPreview" alt="background preview" />
+    </div>
+
+    <main id="mainContainer">
+      <!-- ── Left panel ── -->
+      <div class="panel-left">
+        <div class="section">
+          <div class="section-label">Input</div>
+
+          <div class="field" id="inputField"
+            style="border-left: 3px solid #2abddb; padding-left: 10px; margin-bottom: 24px;">
+            <label for="videoPath">VIDEO FILE</label>
+            <div class="input-row">
+              <input type="text" id="videoPath" placeholder="/path/to/video" />
+              <button class="btn-pick" onclick="pickFile('videoPath')">
+                Browse
+              </button>
+            </div>
+          </div>
+
+          <div class="field" id="outputField" style="border-left: 3px solid #17d317; padding-left: 10px;">
+            <label for="outDir">OUTPUT DIRECTORY</label>
+            <div class="input-row">
+              <input type="text" id="outDir" placeholder="/path/to/output" />
+              <button class="btn-pick" onclick="pickDir('outDir')">Browse</button>
+            </div>
+          </div>
+
+          <div class="section-label">Model</div>
+
+          <div class="field" id="modelField"
+            style="border-left: 3px solid #e40b0b; padding-left: 10px; margin-bottom: 24px;">
+            <!-- Model section -->
+            <label for="modelSelect">WHISPER MODEL</label>
+            <select id="modelSelect" onchange="onModelChange()">
+              <option value="models/ggml-tiny.bin">
+                tiny — fastest, lowest accuracy
+              </option>
+              <option value="models/ggml-base.bin">base — balanced</option>
+              <option value="models/ggml-small.bin" selected>
+                small — recommended
+              </option>
+              <option value="models/ggml-medium.bin">
+                medium — slower, better
+              </option>
+              <option value="models/ggml-large-v3.bin">
+                large — slowest, best
+              </option>
+              <option value="custom">custom path…</option>
+            </select>
+
+            <div style="font-size: 13px; color: #a0aec0; margin-top: 10px; line-height: 1.5;">
+              💡 <b>Tip:</b> For complex languages ​​(French, Japanese, etc.), choose a model
+              size from <b>small</b> or larger to avoid errors.
+            </div>
+          </div>
+
+          <div class="field" id="customModelField"
+            style="border-left: 3px solid #cc1b91; padding-left: 10px; margin-bottom: 24px;">
+            <label>CUSTOM MODEL PATH</label>
+            <input type="text" id="customModelPath" placeholder="/path/to/model.bin" />
+          </div>
+
+          <div class="section-label">Task</div>
+
+          <div class="field" id="taskModeField"
+            style="border-left: 3px solid #2b07ca; padding-left: 10px; margin-bottom: 24px;">
+            <label for="taskModeSelect">TASK MODE</label>
+            <select id="taskModeSelect" onchange="onTaskModeChange()">
+              <option value="transcribe" selected>Transcribe (Keep the original)</option>
+              <option value="translate">Translate (Translate to another language)</option>
+            </select>
+          </div>
+
+          <!-- Input section -->
+          <div class="field" id="inputLanguageField"
+            style="border-left: 3px solid #07ca69; padding-left: 10px; margin-bottom: 24px;">
+            <label for="languageSelect">SPOKEN LANGUAGE (AUDIO)</label>
+            <select id="languageSelect">
+              <option value="vi" selected>Vietnamese</option>
+              <option value="auto">Auto detect</option>
+              <option value="en">English</option>
+              <option value="zh">Chinese</option>
+              <option value="ja">Japanese</option>
+              <option value="ko">Korean</option>
+              <option value="th">Thai</option>
+              <option value="id">Indonesian</option>
+              <option value="ms">Malay</option>
+              <option value="tl">Filipino / Tagalog</option>
+              <option value="fr">French</option>
+              <option value="de">German</option>
+              <option value="es">Spanish</option>
+              <option value="pt">Portuguese</option>
+              <option value="it">Italian</option>
+              <option value="nl">Dutch</option>
+              <option value="ru">Russian</option>
+              <option value="uk">Ukrainian</option>
+              <option value="pl">Polish</option>
+              <option value="cs">Czech</option>
+              <option value="sk">Slovak</option>
+              <option value="sl">Slovenian</option>
+              <option value="bg">Bulgarian</option>
+              <option value="ro">Romanian</option>
+              <option value="hu">Hungarian</option>
+              <option value="el">Greek</option>
+              <option value="tr">Turkish</option>
+              <option value="ar">Arabic</option>
+              <option value="he">Hebrew</option>
+              <option value="fa">Persian</option>
+              <option value="hi">Hindi</option>
+              <option value="bn">Bengali</option>
+              <option value="ur">Urdu</option>
+              <option value="ta">Tamil</option>
+              <option value="te">Telugu</option>
+              <option value="ml">Malayalam</option>
+              <option value="mr">Marathi</option>
+              <option value="gu">Gujarati</option>
+              <option value="kn">Kannada</option>
+              <option value="pa">Punjabi</option>
+              <option value="sw">Swahili</option>
+              <option value="af">Afrikaans</option>
+              <option value="am">Amharic</option>
+              <option value="ha">Hausa</option>
+              <option value="yo">Yoruba</option>
+              <option value="so">Somali</option>
+              <option value="la">Latin</option>
+              <option value="sv">Swedish</option>
+              <option value="da">Danish</option>
+              <option value="fi">Finnish</option>
+              <option value="no">Norwegian</option>
+              <option value="is">Icelandic</option>
+              <option value="ca">Catalan</option>
+            </select>
+          </div>
+
+          <!-- Output section -->
+          <div class="field" id="targetLanguageField" style="border-left: 3px solid #ca6207; padding-left: 10px;">
+            <label for="targetLanguageSelect">SUBTITLE LANGUAGE (TRANSLATE TO)</label>
+            <select id="targetLanguageSelect" aria-label="Subtitle translation target language">
+              <!-- Options filled by js/translation-languages.js (synced with tools/translate_srt.py) -->
+            </select>
+
+            <div style="font-size: 13px; color: #ffb74d; margin-top: 10px; line-height: 1.5;">
+              ⚠️ English: offline via Whisper. Other languages: English subtitles are translated with Python
+              (<code>pip install -r tools/requirements-translate.txt</code>, internet required).
+            </div>
+          </div>
+
+
+        </div>
+
+        <!-- Pipeline section -->
+        <div class="section">
+          <div class="section-label">Pipeline</div>
+          <div class="steps">
+            <div class="step" id="step-ffmpeg">
+              <div class="step-num">1</div>
+              <div class="step-info">
+                <div class="step-name">Audio Extraction</div>
+                <div class="step-desc">ffmpeg → audio.wav (16kHz mono)</div>
+              </div>
+              <div class="step-badge" id="badge-ffmpeg">PENDING</div>
+            </div>
+
+            <div class="step" id="step-whisper">
+              <div class="step-num">2</div>
+              <div class="step-info">
+                <div class="step-name">Speech Recognition</div>
+                <div class="step-desc">whisper.cpp → output.srt</div>
+              </div>
+              <div class="step-badge" id="badge-whisper">PENDING</div>
+            </div>
+
+            <div class="step" id="step-whisperx">
+              <div class="step-num">3</div>
+              <div class="step-info">
+                <div class="step-name">Word Alignment</div>
+                <div class="step-desc">whisperx wav2vec2 → timestamps</div>
+              </div>
+              <div class="step-badge" id="badge-whisperx">PENDING</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Run / Reset -->
+        <div class="run-wrap">
+          <button class="btn-run" id="btnRun" onclick="runPipeline()">
+            ▶ Run Pipeline
+          </button>
+          <button class="btn-reset" id="btnReset" onclick="resetAll()" style="display: none">
+            Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- Vertical splitter -->
+      <div class="v-splitter" id="vSplitter"></div>
+
+      <!-- ── Right panel: console ── -->
+      <div class="panel-right" id="panelRight">
+        <div class="console-wrapper">
+          <div class="log-header">
+            <span class="log-title">Console Output</span>
+            <span class="log-count" id="logCount">0 lines</span>
+            <button class="btn-clear" onclick="clearLogs()">Clear</button>
+          </div>
+
+          <div class="done-banner" id="doneBanner">
+            <strong>✓ Pipeline completed</strong>
+            <span class="done-path" id="donePath"></span>
+          </div>
+
+          <div class="log-body" id="logBody">
+            <div class="log-empty" id="logEmpty">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M7 8h10M7 12h6M7 16h4" />
+              </svg>
+              <p>NO OUTPUT YET</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Horizontal splitter -->
+        <div class="h-splitter" id="hSplitter"></div>
+
+        <section class="preview-panel" id="previewPanel" style="display: none;">
+          <div class="preview-header">
+            <div>
+              <div class="preview-title">Subtitle Preview</div>
+              <div class="preview-file" id="previewFile">output.srt</div>
+            </div>
+            <div class="preview-stats">
+              <span id="previewSegments">0 segments</span>
+              <span id="previewDuration">0:00</span>
+              <span id="previewWords">0 words</span>
+            </div>
+          </div>
+
+          <div class="preview-limit-control" id="previewLimitControl" style="
+                                margin: 10px 0;
+                                padding: 10px;
+                                background: rgba(255, 255, 255, 0.05);
+                                border-radius: 4px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                font-size: 13px;
+                            ">
+            <div id="limitMessage" style="color: var(--text); opacity: 0.9"></div>
+            <div style="display: flex; align-items: center; gap: 8px">
+              <label for="maxRowsInput">Show lines:</label>
+              <input type="number" id="maxRowsInput" value="100" min="1" style="
+                                        width: 80px;
+                                        background: rgba(0, 0, 0, 0.3);
+                                        border: 1px solid rgba(255, 255, 255, 0.2);
+                                        color: #fff;
+                                        padding: 4px 8px;
+                                        border-radius: 4px;
+                                        text-align: center;
+                                    " />
+              <button class="btn-pick" id="btnApplyLimit" onclick="renderSubtitleTable()"
+                style="padding: 4px 12px; margin: 0">
+                Apply
+              </button>
+            </div>
+          </div>
+
+          <div class="preview-summary" id="previewSummary"></div>
+
+          <div class="preview-table-wrap">
+            <table class="preview-table">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Subtitle</th>
+                </tr>
+              </thead>
+              <tbody id="previewRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- JS: order matters — each file depends on the previous -->
+  <script src="js/tauri.js"></script>
+  <!-- Tauri bridge + isTauri -->
+  <script src="js/logger.js"></script>
+  <!-- appendLog, clearLogs   -->
+  <script src="js/theme.js"></script>
+  <!-- applyTheme, panel      -->
+  <script src="js/translation-languages.js"></script>
+  <!-- target language list   -->
+  <script type="module" src="js/pipeline.js"></script>
+  <!-- runPipeline, resetAll  -->
+
+  <script>
+    const mainContainer = document.getElementById("mainContainer");
+    const panelRight = document.getElementById("panelRight");
+    const vSplitter = document.getElementById("vSplitter");
+    const hSplitter = document.getElementById("hSplitter");
+
+    // --- process vertical splitter events ---
+    vSplitter.addEventListener("mousedown", function (e) {
+      e.preventDefault();
+      document.addEventListener("mousemove", onVerticalMove);
+      document.addEventListener("mouseup", stopVerticalMove);
+      vSplitter.classList.add("dragging");
+    });
+
+    function onVerticalMove(e) {
+      let percentage = (e.clientX / window.innerWidth) * 100;
+      // Giới hạn tỷ lệ kéo cột trái từ 20% đến 50%
+      if (percentage > 20 && percentage < 50) {
+        mainContainer.style.gridTemplateColumns = `${percentage}% auto 1fr`;
+      }
+    }
+
+    function stopVerticalMove() {
+      document.removeEventListener("mousemove", onVerticalMove);
+      document.removeEventListener("mouseup", stopVerticalMove);
+      vSplitter.classList.remove("dragging");
+    }
+
+    // --- process horizontal splitter events ---
+    hSplitter.addEventListener("mousedown", function (e) {
+      e.preventDefault();
+      document.addEventListener("mousemove", onHorizontalMove);
+      document.addEventListener("mouseup", stopHorizontalMove);
+      hSplitter.classList.add("dragging");
+    });
+
+    function onHorizontalMove(e) {
+      // subtract header height (60px) from mouse Y position to get new panel height
+      let newHeight = e.clientY - 60;
+      // limit vertical splitter to prevent panels from disappearing (min 100px, max window height - 150px)
+      if (newHeight > 100 && newHeight < window.innerHeight - 150) {
+        panelRight.style.gridTemplateRows = `${newHeight}px auto 1fr`;
+      }
+    }
+
+    function stopHorizontalMove() {
+      document.removeEventListener("mousemove", onHorizontalMove);
+      document.removeEventListener("mouseup", stopHorizontalMove);
+      hSplitter.classList.remove("dragging");
+    }
+
+    // --- process UI toggle for Task Mode ---
+    function onTaskModeChange() {
+      const mode = document.getElementById("taskModeSelect").value;
+      const targetField = document.getElementById("targetLanguageField");
+
+      if (mode === "translate") {
+        // show target language select when select Translate
+        targetField.style.display = "block";
+      } else {
+        // hide target language select when select Transcribe
+        targetField.style.display = "none";
+      }
+    }
+  </script>
+</body>
+
+</html>

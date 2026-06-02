@@ -1,0 +1,13 @@
+{
+  "identifier": "default",
+  "description": "Default capability",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "dialog:allow-open",
+    {
+      "identifier": "fs:allow-read-file",
+      "allow": [{ "path": "**/*" }]
+    }
+  ]
+}

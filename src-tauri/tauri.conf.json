@@ -1,0 +1,36 @@
+{
+  "productName": "SoftSub",
+  "version": "0.1.0",
+  "identifier": "com.hai.softsub",
+  "build": {
+    "beforeDevCommand": "npm run copy-whisper:dev",
+    "beforeBuildCommand": "npm run copy-whisper:release",
+    "frontendDist": "../src"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "title": "  SoftSub Editor",
+        "width": 1000,
+        "height": 800,
+        "resizable": true
+      }
+    ],
+    "security": {
+      "csp": null,
+      "assetProtocol": {
+        "scope": [
+          "**"
+        ]
+      }
+    }
+  },
+  "bundle": {
+    "active": true,
+    "icon": [
+      "icons/icon.ico",
+      "icons/icon.png"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "useTabs": false,
+  "tabWidth": 4,
+  "printWidth": 120,
+  "semi": true,
+  "singleQuote": false,
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "trailingComma": "es5",
+  "endOfLine": "lf",
+  "overrides": [
+    {
+      "files": [
+        "tests/*.rs"
+      ],
+      "options": {
+        "printWidth": 100
+      }
+    }
+  ],
+  "plugins": [
+    "prettier-plugin-brace-style"
+  ],
+  "braceStyle": "allman"
+}
