@@ -54,7 +54,7 @@ jobs:
   python-test:
     needs: changes
     if: needs.changes.outputs.python == 'true'
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -78,10 +78,6 @@ jobs:
       - name: Find whisper binary
         shell: bash
         run: find whisper.cpp -type f
-
-      - name: Fix permission
-        shell: bash
-        run: chmod +x whisper.cpp/whisper-cli.exe
       
       - name: Generate SRT from audio
         run: |
