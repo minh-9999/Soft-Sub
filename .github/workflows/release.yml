@@ -69,6 +69,13 @@ jobs:
       - name: Run Python tests
         run: pytest tools/tests
 
+      - name: Build application
+        run: npm run build
+
+      - name: Verify artifacts
+        run: |
+          dir src-tauri\target\release\bundle /s
+
       - name: Build and create GitHub Release
         uses: softprops/action-gh-release@v2
         env:
