@@ -1,5 +1,7 @@
 import os
 import subprocess
+import platform
+import sys
 
 
 def main(input_path, output_path):
@@ -12,7 +14,11 @@ def main(input_path, output_path):
     json_path = os.path.join(base_dir, "temp_words.json")
 
     # 1. run whisper.cpp
-    WHISPER_BIN = os.path.join("whisper.cpp", "main")
+    ext = ".exe" if platform.system() == "Windows" else ""
+    WHISPER_BIN = os.path.join("whisper.cpp", f"whisper-cli{ext}")
+
+    if not os.path.exists(WHISPER_BIN):
+        raise RuntimeError(f"Whisper binary not found: {WHISPER_BIN}")
 
     subprocess.run([WHISPER_BIN, "-f", input_path, "-oj", json_path], check=True)
 
@@ -21,6 +27,5 @@ def main(input_path, output_path):
 
 
 if __name__ == "__main__":
-    import sys
 
     main(sys.argv[1], sys.argv[2])
