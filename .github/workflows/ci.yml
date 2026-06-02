@@ -67,12 +67,18 @@ jobs:
           pip install -r tools/requirements-dev.txt
           pytest tools/tests
   
+      - name: Ensure output dir
+        run: mkdir -p tests/output
+  
       - name: Generate SRT from audio
         run: |
           python tools/generate.py \
             tests/fixtures/audio/sample.wav \
             tests/output/out.srt
       
+      - name: Check file exists (debug)
+        run: ls tests/output
+  
       - name: Regression check
         run: |
           python tools/tests/compare.py \

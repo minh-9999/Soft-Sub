@@ -15,3 +15,8 @@ def main(input_path, output_path):
 
     # 2. call make_srt.py
     subprocess.run(["python", "tools/make_srt.py", json_path, output_path], check=True)
+
+
+if __name__ == "__main__":
+    import sys
+    main(sys.argv[1], sys.argv[2])
