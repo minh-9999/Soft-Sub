@@ -53,7 +53,7 @@ jobs:
           
   python-test:
     needs: changes
-    if: needs.changes.outputs.python == 'true'
+    if: ${{ needs.changes.outputs.python == 'true' || github.event_name == 'workflow_dispatch' }}
     runs-on: windows-latest
 
     steps:
