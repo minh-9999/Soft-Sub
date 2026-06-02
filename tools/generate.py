@@ -14,12 +14,7 @@ def main(input_path, output_path):
     json_path = os.path.join(base_dir, "temp_words.json")
 
     # 1. run whisper.cpp
-    candidates = [
-        os.path.join("whisper.cpp", "whisper-cli.exe"),
-        os.path.join("whisper.cpp", "main.exe"),
-    ]
-
-    WHISPER_BIN = next((p for p in candidates if os.path.exists(p)), None)
+    WHISPER_BIN = os.path.join("whisper.cpp", "whisper-cli.exe")
 
     if not WHISPER_BIN:
         raise RuntimeError(f"Missing whisper binary in whisper.cpp")
