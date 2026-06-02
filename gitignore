@@ -2,20 +2,19 @@
 # Soft-Sub .gitignore
 # ============================================
 
-# ── IDE / OS ──
+# ── IDE ──
 .idea/
 .vscode/
-*.iml
+
+
+# ── OS ── 
 .DS_Store
 Thumbs.db
-*.swp
-*.swo
-.history/
 
 # ── Tauri Desktop (Soft-Sub) ──
-Soft-Sub/node_modules/
-Soft-Sub/src-tauri/target/
-Soft-Sub/src-tauri/gen/
+node_modules/
+src-tauri/target/
+src-tauri/gen/
 
 
 # ── General ──
@@ -36,10 +35,18 @@ coverage/
 *.jks
 *.keystore
 key.properties
-.env
-.env.*
 secrets.*
 local_settings.*
+
+# ── Python ── 
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+
+# ── Environment ── 
+.env
+.env.*
 
 # ── Build outputs ──
 dist/

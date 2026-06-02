@@ -1,4 +1,4 @@
-# SoftSub
+# Soft-Sub
 
 > A cross-platform desktop app that automatically extracts soft subtitles from video files using [whisper.cpp](https://github.com/ggerganov/whisper.cpp), with optional word-level timestamp alignment via [WhisperX](https://github.com/m-bain/whisperX).
 
@@ -20,6 +20,35 @@
 
 ---
 
+## Screenshots
+
+<h2>Screenshots</h2>
+
+<h3>Image Theme</h3>
+
+<p>
+  Main application window using the image-based theme.
+</p>
+
+<img src=".github/images/Image-theme.PNG" width="900">
+
+<h3>Dracula Theme</h3>
+
+<p>
+  Built-in Dracula dark theme.
+</p>
+
+<img src=".github/images/dracula-theme.PNG" width="900">
+
+<h3>Generated Subtitle</h3>
+
+<p>
+  Example subtitle generated automatically from a video.
+</p>
+
+<img src=".github/images/result.PNG" width="900">
+
+---
 ## Tech Stack
 
 | Layer | Technology |
@@ -71,63 +100,49 @@ whisper.cpp/
 ## Project Structure
 
 ```
-SoftSub/
-│
-├── src/                        # Frontend (HTML + CSS + JS)
+## Project Structure
+
+```text
+Soft-Sub/
+├── src/                      # Frontend (HTML/CSS/JavaScript)
 │   ├── index.html
 │   ├── css/
-│   │   └── main.css            # All styles and theme
-│   │
-variables
+│   │   └── main.css
 │   ├── js/
-│   │   ├── tauri.js            # Tauri API bridge
-│   │   ├── pipeline.js         # Pipeline state, step UI, SRT
-│   │
-viewer
-│   │   ├── logger.js           # Console log rendering
-│   │   └── theme.js            # Theme switching and
-│   │
-background image
-│   ├── assets/
-│   │   ├── click.wav
-│   │   └── success.wav
-│   │
-├── src-tauri/                  # Rust backend
+│   │   ├── tauri.js          # Tauri API bridge
+│   │   ├── pipeline.js       # Pipeline orchestration and UI state
+│   │   ├── logger.js         # Log viewer
+│   │   └── theme.js          # Theme management
+│   └── assets/
+│       ├── click.wav
+│       └── success.wav
+│
+├── src-tauri/                # Rust backend
 │   ├── src/
-│   │   └── main.rs             # Commands: run_pipeline, 
-│   │
-pick_video_file, …
+│   │   ├── main.rs
+│   │   └── lib.rs
 │   ├── benches/
-│   │   └── pipeline_bench.rs   # Criterion benchmark 
-│   │
-(optional)
+│   │   └── pipeline_bench.rs
 │   ├── capabilities/
-│   │   └── default.json        # Tauri permission manifest
+│   │   └── default.json
 │   ├── Cargo.toml
-│   ├── build.rs
 │   └── tauri.conf.json
-│   │
+│
+├── tools/                    # Python subtitle utilities
+│   ├── make_srt.py
+│   └── translate_srt.py
+│
 ├── scripts/
-│   └── copy-whisper.js         # Copies whisper.cpp → Tauri 
-│   │
-target dir
-├── tools/
-│   └── make_srt.py             # Standalone SRT builder from 
-│   │
-JSON word timestamps
-├── whisper.cpp/               
-│   ├── whisper-cli(.exe)
-│   ├── whisper-stream(.exe)
-│   ├── ...
+│   └── copy-whisper.js       # Copies whisper.cpp binaries/models
+│
+├── whisper.cpp/              # whisper.cpp runtime and models
+│   ├── whisper-cli
 │   └── models/
-│   │   └── ggml-small.bin
-│   │   └── ggml-base.bin
-│   │   └── ggml-medium.bin
-│   │   └── ggml-large-v3.bin
-│   │   └── ...
-│   │
+│
 ├── package.json
 └── README.md
+```
+
 ```
 
 ---
@@ -137,8 +152,8 @@ JSON word timestamps
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/softsub.git
-cd softsub
+git clone https://github.com/minh-9999/Soft-Sub.git
+cd Soft-Sub
 ```
 
 ### 2. Install Node dependencies
@@ -157,11 +172,11 @@ git clone https://github.com/ggerganov/whisper.cpp
 cd whisper.cpp
 cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build --config Release
-cp build/bin/whisper-cli ../softsub/whisper.cpp/
+cp build/bin/whisper-cli ../Soft-Sub/whisper.cpp/
 # Download a model
 bash ./models/download-ggml-model.sh small
-cp models/ggml-small.bin ../softsub/whisper.cpp/models/
-cd ../softsub
+cp models/ggml-small.bin ../Soft-Sub/whisper.cpp/models/
+cd ../Soft-Sub
 ```
 
 You can download optimized .bin models manually from the  [Hugging Face](https://huggingface.co/ggerganov/whisper.cpp) Repository
